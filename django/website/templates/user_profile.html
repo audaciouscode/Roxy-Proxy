@@ -1,0 +1,57 @@
+{% extends "roxy_base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}Edit Profile | Roxy Proxy{% endblock %}
+{% block content %}
+	{% if LANGUAGE_CODE == 'he' %}
+		<!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h2>ערוך פרופיל {{ request.user.username }}</h2>
+						{% if updated %}
+							<div class="alert alert-success">פרופיל עודכן.</div>
+						{% endif %}
+						<form action="" method="post">
+							{% csrf_token %}
+							<p>כתובת הדואר האלקטרוני שלך: <br />{{ form.email }}</p>
+							<p>תחילה: <br />{{ form.first_name }}</p>
+							<p>שם: <br />{{ form.last_name }}</p>
+							<p>Session Duration: <br />{{ form.session_duration }}</p>
+							<input type="submit" class="btn" value="Update" />
+						</form>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+		    </div>
+		</div>
+	{% else %}
+	    <!--MAIN CONTENT AREA-->
+    	<div class="container inner_content">
+    		<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h2>Edit Profile: {{ request.user.username }}</h2>
+						{% if updated %}
+							<div class="alert alert-success">Profile updated.</div>
+						{% endif %}
+						<form action="" method="post">
+							{% csrf_token %}
+							<p>E-Mail Address: <br />{{ form.email }}</p>
+							<p>First Name: <br />{{ form.first_name }}</p>
+							<p>Last Name: <br />{{ form.last_name }}</p>
+							<p>Session Duration: <br />{{ form.session_duration }}</p>
+							<input type="submit" class="btn" value="Update" />
+						</form>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+	    	</div>
+		</div>
+	{% endif %}
+{% endblock %}

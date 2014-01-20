@@ -1,0 +1,123 @@
+{% load website_tags i18n %}
+{% blocktrans %}<!DOCTYPE html><html lang="en">{% endblocktrans %}
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- styles -->
+    <link href="/static/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/assets/css/docs.css" rel="stylesheet">
+    <link href="/static/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/assets/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 8]>
+    	<link rel="stylesheet" type="text/css" href="/static/assets/css/ie.css" />
+    <![endif]-->
+    <!-- fav and touch icons -->
+    <link rel="shortcut icon" href="/static/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/assets/ico/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/assets/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/assets/ico/apple-touch-icon-114x114.png">
+    <!--GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,400italic,700italic|Doppio+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fugaz+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Days+One|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Exo:800' rel='stylesheet' type='text/css'>
+    <!--/GOOGLE FONTS-->
+    {% block page_header %}{% endblock %}
+</head>
+<body>
+    <!--TOP-->
+    <div class="top_line"></div>
+    <!--/TOP-->
+    <!--HEADER-->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="span4 logo" style="padding-top: 7px;">
+                    <a href="{% url home %}"><img src="/static/img/roxy-logo.jpg" alt="Roxy Proxy" style="height: 60px; margin-bottom: 7px; margin-top: 7px;" /></a>
+                </div>
+               	{% include "templatetags/header_menu.html" %}
+            </div>
+		</div>
+	</header>
+	<!--/HEADER-->
+    {% block content %}
+    {% endblock %}
+    <!--FOOTER-->
+    <footer>
+		{% include "templatetags/footer_menu.html" %}
+    </footer>
+    <!--/FOOTER-->
+    <!--BOTTOM LINE-->
+    <div class="bottom-block">
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="span6">
+                            <span>Valera Template</span></span>
+                        </div>
+                        <div class="span6">
+                           <!-- <span class="pull-right visible-desktop"><span class="undercolored"><a href="#">Home</a></span> / <span class="undercolored"><a href="#">Features</a></span> / <span class="undercolored"><a href="#">Pages</a></span> / <span class="undercolored"><a href="#">Portfolio</a></span> / <span class="undercolored"><a href="#">Blog</a></span> / <span class="undercolored"><a href="#">Typography</a></span> / <span class="undercolored"><a href="#">Contact</a></span></span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/BOTTOM LINE-->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>	
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="/static/assets/js/jquery.js"></script>
+    <script src="/static/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="/static/assets/js/bootstrap-transition.js"></script>
+    <script src="/static/assets/js/bootstrap-alert.js"></script>
+    <script src="/static/assets/js/bootstrap-modal.js"></script>
+    <script src="/static/assets/js/bootstrap-dropdown.js"></script>
+    <script src="/static/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="/static/assets/js/bootstrap-tab.js"></script>
+    <script src="/static/assets/js/bootstrap-tooltip.js"></script>
+    <script src="/static/assets/js/bootstrap-popover.js"></script>
+    <script src="/static/assets/js/bootstrap-button.js"></script>
+    <script src="/static/assets/js/bootstrap-collapse.js"></script>
+    <script src="/static/assets/js/bootstrap-carousel.js"></script>
+    <script src="/static/assets/js/bootstrap-typeahead.js"></script>
+    <script src="/static/assets/js/jquery.easing.1.3.js"></script>
+    <script src="/static/assets/js/jquery.slabtext.min.js"></script>
+    <script src="/static/assets/js/jquery.flexslider-min.js"></script>
+    <script src="/static/assets/js/superfish-menu/superfish.js"></script>
+    <script src="/static/assets/js/plugin.js"></script>
+    <script src="/static/assets/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/assets/js/twitter.js"></script>
+    <script src="/static/assets/js/jquery.gmap.min.js"></script>
+    <script src="/static/assets/js/jquery.preloader.js"></script>
+    <script src="/static/assets/js/custom.js"></script>
+	<script type="text/javascript">var runFancy = true;</script>
+    <!--[if IE]>
+    <script type="text/javascript">
+        runFancy = false;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+		if (runFancy) {
+			jQuery.noConflict()(function($){
+			$(".view").preloader();
+			$(".flexslider").preloader();
+			});
+		}
+    </script>
+	</body>
+</html>

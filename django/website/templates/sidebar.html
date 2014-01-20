@@ -1,0 +1,38 @@
+{% load i18n %}
+<div class="well">
+	<ul class="nav nav-list">
+		{% if request.user.is_authenticated %}
+			<li class="active">
+				<a href="{% url user_home %}">{% blocktrans %}History{% endblocktrans %}</a>
+			</li>
+			<li>
+				<a href="{% url blacklist %}">{% blocktrans %}Blacklist{% endblocktrans %}</a>
+			</li>
+			<li>
+				<a href="{% url auth_password_change %}">{% blocktrans %}Change Password{% endblocktrans %}</a>
+			</li>
+			<li>
+				<a href="{% url change_session %}">{% blocktrans %}Change Session Type{% endblocktrans %}</a>
+			</li>
+			<li>
+				<a href="{% url edit_profile %}">{% blocktrans %}Edit Profile{% endblocktrans %}</a>
+			</li>
+			<li>
+				<a href="{% url proxy_test %}">{% blocktrans %}Roxy Setup Test{% endblocktrans %}</a>
+			</li>
+			<li class="divider"></li>
+		{% endif %}
+		<li>
+			<a href="{% url setup %}">{% blocktrans %}Getting Started{% endblocktrans %}</a>
+		</li>
+		<li>
+			<a href="{% url using %}">{% blocktrans %}Using Roxy{% endblocktrans %}</a>
+		</li>
+		<li>
+			<a href="{% url faq %}">{% blocktrans %}Frequently Asked Questions{% endblocktrans %}</a>
+		</li>
+		<li>
+			<a href="{% url about %}">{% blocktrans %}About Roxy{% endblocktrans %}</a>
+		</li>
+	</ul>
+</div>

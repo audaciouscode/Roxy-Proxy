@@ -1,0 +1,55 @@
+{% extends "roxy_base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}Setup Roxy | iPad{% endblock %}
+{% block content %}
+	{% if LANGUAGE_CODE == 'he' %}
+		<!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h1></a>הגדרות רוקסי פרוקסי</h1>
+						<h3>איפד</h3>
+				
+						{{ LANGUAGE_CODE }}
+						<ol>
+							<li>הכנס את העמוד<a href="{% url change_session %}">שנה סוג גלישה</a>למועדפים על מנת להקל על הגישה והשליטה שלך בסוגי הגלישה האפשריים ברוקסי</li>
+							<li>הדפס את ההוראות הללו למקרה שתצטרך להתחבר  בלי גישה לאינטרנט</li>
+							<li>על מנת <strong>להתנתק</strong>מרוקסי, עקוב אחרי צעדי ההתקנה, אך במקום  להוסיף  את הכתובת של רוקסי, ({{ user.profile.pac_url }}), <strong>הסר אותה</strong>.</li>
+						</ol>	
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+    	<!--MAIN CONTENT AREA-->
+	    <div class="container inner_content">
+    		<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h1></a>Roxy Proxy Setup </h1>
+						<h3>iPad</h3>
+						<ol>
+							<li>This setup can only be completed when connected to a the WiFi network. Each WiFi network used by the iPad must be setup in the same way.</li>
+							<li>Go to the Settings App.</li>
+							<li>Choose WiFi.</li>
+							<li>Tap the blue arrow next to the WiFi network you are using</li>
+							<li>Near the bottom of the screen are the HTTP Proxy settings. Choose "Auto" and type in <br><strong>{{ user.profile.pac_url }}</strong><br></li>
+							<li>Exit the settings app. Roxy's login screen will pop up when using Safari. You may need to login to Roxy via Safari to continue using the internet on the iPad.</li>
+							<li>Bookmark the <a href="{% url change_session %}">Change Session Type</a> page for easy access to control your session type at any time.</li>
+							<li>Print these instructions in case you need to access them offline.</li>
+							<li>To <strong>disconnect</strong> from Roxy, go through the setup instructions, but instead of adding the proxy address ({{ user.profile.pac_url }}), <strong>remove it</strong>.</li>
+						</ol>	
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+	    	</div>
+		</div>
+	{% endif %}
+{% endblock %}

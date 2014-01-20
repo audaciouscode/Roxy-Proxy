@@ -1,0 +1,61 @@
+{% extends "roxy_base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}Proxy Test | Roxy Proxy{% endblock %}
+{% block content %}
+	{% if LANGUAGE_CODE == 'he' %}
+		<!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h1><a name="home"></a>מבחן הפעלה לרוקסי</h1>
+						<p>זה עמוד שבודק הם  המערכת שלך הותאמה לעבוד עם רוקסי.</p>
+
+						{% if using_roxy %}
+							<h1><font color="green">רוקסי פעילה</font></h1>
+							<h2>התקנה הושלמה</h2>
+							<p>כשאתם משתמשים ברוקסי חלק מהאתרים יכולים לחשוב בטעות שאתם באירלנד. אנחנו מתנצלים על אי הנוחות שיכולה להיגרם מכך. השרתים שלנו ממוקמים באירלנד.</p>
+							<p>	<a href="{% url using %}">לחץ כאן</a>למידע נוסף לגבי השימוש ברוקסי</p>
+						{% else %}
+							<h1><strong><font color="red">רוקסי לא פעילה</font></strong></h1>
+							<h4><br/><strong>אנא בדוק את<a href="{% url setup %}">הוראות ההפעלה</a> לדפדפן שלך</strong></h4>
+			
+						{% endif %}
+						<p>Requesting IP Address: {{ ip_address }}</p>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+		    </div>
+		</div>
+	{% else %}
+		<!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h1><a name="home"></a>Proxy Test</h1>
+						<p>This page is a test of whether your system is configured to work with Roxy.</p>
+				
+						{% if using_roxy %}
+							<h1><font color="green"> Roxy is active.</font></h1>
+							<h2>Setup is complete. </h2>
+							<p>When using Roxy, some websites may think you are in Ireland. We apologize for any inconvenience this may cause, Roxy's servers are located in Ireland.</p>
+							<p>	<a href="{% url using %}">Click here</a> for more information about using Roxy.</p>
+						{% else %}
+							<h1><strong><font color="red">Roxy is not active.</font></strong></h1>
+							<h4><br/><strong>Please review the <a href="{% url setup %}">setup instructions</a> for your browser.</strong></h4>
+							
+						{% endif %}
+						<p>Requesting IP Address: {{ ip_address }}</p>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+		    </div>
+		</div>
+	{% endif %}
+{% endblock %}

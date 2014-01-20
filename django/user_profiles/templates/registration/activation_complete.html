@@ -1,0 +1,17 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}{% if LANGUAGE_CODE == 'he' %}תהליך ההפעלה הסתיים | רוקסי פרוקס{% else %}Activation complete | Roxy Proxy{% endif %}{% endblock %}
+{% block content %}
+<div class="container inner_content">
+	<div class="row-fluid">
+		<div class="span12">
+			{% if LANGUAGE_CODE == 'he' %}
+	תודה {{ account }} הרישום לרוקסי הסתיים בהצלחה<strong>אבל ההתקנה של רוקסי עדיין לא הושלמה </strong>. אנא <a href='{% url auth_login %}'>התחבר</a> באמצעות שם המשתמש והסיסמא שלך על מנת להשלים את התהליך.<br />
+			{% else %}
+				Thanks {{ account }}. You have successfully registered for an account, <strong>but Roxy setup is NOT complete</strong>. Please <a href='{% url auth_login %}'>login</a> using the username and password you set at registration to continue the setup process.<br />
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

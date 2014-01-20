@@ -1,0 +1,30 @@
+{% load i18n %}{% get_current_language as LANGUAGE_CODE %}{% if LANGUAGE_CODE == 'he' %}בקשת לפתוח חשבון ב  {{ site.name }}. אם זה לא היית אתה, אנא התעלם מהודעה זו וכתובת הדואר שלך תמחק מהרשומות שלנו. 
+להפעלת החשבון שלך, אנא לחץ על הקישור למטה:
+ 
+http://{{site.domain}}/accounts/activate/{{ activation_key }}
+
+פתיחת החשבון היא הצעד הראשון  בתהליך ההתקנה של רוקסי. אחרי הפעלת חשבונך  תתבקש להשלים את הצעדים הנוספים בתהליך ההתקנה. תודה לך על עזרתך בבדיקות הבטא של רוקסי. 
+
+הקישור הזה יפוג בתוך {{ expiration_days }}  ימים.
+תודה, 
+רוסי צוות פיתוח תוכנה
+במידה ויש לך שאלות נוספות אתה מוזמן לפנות (באנגלית) ל
+Ericka Menchen-Trevino at emtrevino@gmail.com
+
+או לשירה דביר (עברית) ב
+shiradvir@me.com
+{% else %}You have asked to register an account at {{ site.name }}. If this wasn't you, please ignore this email and your address will be removed from our records.
+
+To activate this account, please click the following link:
+
+http://{{site.domain}}/accounts/activate/{{ activation_key }}
+
+Creating an account is the first step of the Roxy setup process. After you activate your account you will be asked to complete the remaining steps of the setup process. Thank you for helping us to beta test Roxy!
+
+This link will expire in {{ expiration_days }} days.
+
+Sincerely,
+The Roxy Development Team
+
+If you have any questions please email Ericka Menchen-Trevino at emtrevino@gmail.com
+{% endif %}

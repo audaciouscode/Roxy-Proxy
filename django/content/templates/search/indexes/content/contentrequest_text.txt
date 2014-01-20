@@ -1,0 +1,2 @@
+{{ object.fetch_title }}
+{{ object.get_text_content }}

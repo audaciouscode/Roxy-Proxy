@@ -1,0 +1,62 @@
+{% extends "roxy_base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}Setup Roxy | Macintosh{% endblock %}
+{% block content %}
+	{% if LANGUAGE_CODE == 'he' %}
+		<!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<!-- Start text content. -->
+						<h1></a>התקנה של רוקסי</h1>
+						<h3></a>מקינטוש: ספרי, כרום, ופיירפוקס  </h3>
+						<ol>
+							<li>פתח את העדפות  מערכת על ידי הקשה על תפריט אפל   - סימן <img src="/static/img/Apple.gif" alt="Apple Icon"> בפינה השמאלית העליונה של המחשב ובחירה בהעדפות מערכת</li>
+							<li>בהעדפות  מערכת לך לרשת. שם תראה את כל סוגי החיבורים שלך.  בדוגמה למטה סוגי הקישורים הם  תקשורת אל חוטית,   Ethernet, FireWire, iPhone USB, and Bluetooth PAN.  במקרה  כאן  תקשורת אלחוטית  מואר בגלל שהוא סוג הקישור הנמצא בשימוש כרגע. <br/><br/><img src="/static/img/heMac1.png" width="450" /> </li>
+							<li>לחץ על הכפתור מתקדם ואז על הלשונית שרתי פרוקסי. סמן הגדרת פרוקסי אוטומטי. ואז הדפס או הדבק <br><strong>{{user.profile.pac_url}}</strong> <br/><br/><img src="/static/img/heMac2.png" width="450" /></li>
+							<li>לחץ אישור.  זה יחזיר אותך חזרה לתפריט הגדרות רשת שיכול לכלול מגוון סוגי קישורים (ראה צעד 2  למעלה).  בחר את סוג הקישור הבא. בדוגמה  למעלה החיבור הוא נקרא Ethernet. חזור על  שלב 3 לכל סוג קישור.</li>
+							<li>כאשר סיימת להכניס את ההגדרות של הפרוקסי לכל אחד מסוגי הקישורים, לחץ החל על מנת לשמור את העדכונים שעשית</li>
+							<li><a href="{% url proxy_test %}">הקלק כאן</a> לבדוק האם ההתקנה הושלמה בהצלחה</li>
+							<li>הוסף את <a href="{% url change_session %}">שנה סוג גלישה</a>  למועדפים על מנת להקל על הגישה והשליטה שלך בסוגי הגלישה האפשריים ברוקסי</li>
+							<li>הדפס את ההוראות הללו למקרה שתצטרך להתחבר  בלי גישה לאינטרנט</li>
+							<li>על מנת <strong>להתנתק</strong> מרוקסי, עקוב אחרי צעדי ההתקנה, אך במקום  להוסיף  את הכתובת של רוקסי,  ({{ user.profile.pac_url }}), <strong>הסר אותה</strong>.</li>
+						</ol>
+						<p>לך ל <a href={% url setup %}>הוראות התקנה</a> לדפדפנים אחרים</p>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+		    </div>
+		</div>
+	{% else %}
+		<!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h1></a>Roxy Proxy Setup</h1>
+						<h3></a>Macintosh: Safari, Chrome and Firefox</h3>
+						<ol>
+							<li>Open your System Preferences by going to the Apple Menu (The <img src="/static/img/Apple.gif" alt="Apple Icon"> on the top left-hand corner of your screen.) and choosing System Preferences.</li>
+							<li>In the System Preferences go to Network. There you will see all of your connection types. On the example below this includes AirPort, Ethernet, FireWire, and NUVPN. In this case AirPort is highlighted because that is the current connection type. Your screen may say Wi-Fi instead of AirPort. <br/><br/><img src="/static/img/MacNetwork.gif" width="450" /> </li>
+							<li>Choose the Advanced button &gt; Proxies tab. Check "Automatic proxy configuration." Type or paste in <br><strong>{{user.profile.pac_url}}</strong><br/><br/><img src="/static/img/MacSystem1.png" width="450"/></li>
+							<li>Choose OK. This brings you back to your Network settings that may include several connection types (see step 2 above). Choose the next connection type, in this example it is called Ethernet. Repeat step 3 for each connection type (in the example image from step 2: AirPort, Ethernet, FireWire).</li>
+							<li>When you have finished entering the proxy setting for each connection type, click Apply to save the changes.</li>
+							<li><a href="{% url proxy_test %}">Click here</a> to test if the setup is complete.</li>
+							<li>Bookmark the <a href="{% url change_session %}">Change Session Type</a> page for easy access to control your session type at any time.</li>
+							<li>Print these instructions in case you need to access them offline.</li>
+							<li>To <strong>disconnect</strong> from Roxy, go through the setup instructions, but instead of adding the proxy address ({{ user.profile.pac_url }}), <strong>remove it</strong>.</li>
+						</ol>
+						<p>Go to <a href={% url setup %}>setup instructions</a> for other browsers</p>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+		    </div>
+		</div>
+	{% endif %}
+{% endblock %}
