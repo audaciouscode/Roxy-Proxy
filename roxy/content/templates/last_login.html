@@ -1,0 +1,109 @@
+{% extends "roxy_base.html" %}
+{% block title %}Top Users | Roxy Proxy{% endblock %}
+{% block page_header %}
+	{% if report %}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/highcharts/js/highcharts.js"></script>
+		<script type="text/javascript">
+			$(function ()
+			{
+				var users = [];
+				var requests = [];
+				
+				{% for user in report_contents.users %}
+					users.push("{{ user.user.strip }}");
+					requests.push({{ user.frequency }});
+				{% endfor %}
+				
+			    var chart;
+			    $(document).ready(function() 
+			    {
+		    	    chart = new Highcharts.Chart({
+        		    	"chart": {
+    	            		"renderTo": 'container',
+			                "type": 'bar'
+	        	    	},
+    		    	    "title": {
+            		    	"text": 'Top Users'
+			            },
+			            "subtitle": {
+		    	            "text": 'Dates: {{ start }} to {{ end }}'
+        			    },
+		            	"xAxis": {
+    	    		        "categories": users,
+	                		"title": {
+		    	                "text": null
+        			        }
+			            },
+    	    		    "yAxis": {
+		    	            "min": 0,
+        			        "title": {
+		                	    "text": 'Requests',
+        		            	"align": 'high'
+			                }
+    	    		    },
+			            "plotOptions": {
+        			        "bar": {
+		                	    "dataLabels": {
+			                        "enabled": true
+    	    		            }
+        	        		}
+		    	        },
+		        	    "legend": {
+		                	"layout": 'vertical',
+	        		        "align": 'right',
+    	            		"verticalAlign": 'top',
+			                "x": -100,
+        			        "y": 100,
+                			"floating": true,
+		            	    "borderWidth": 1,
+        		        	"backgroundColor": '#FFFFFF',
+	                		"shadow": true
+			            },
+        			    "credits": {
+		        	        "enabled": false
+        		    	},
+			            "series": [{
+				                "name": 'Requests',
+                				"data": requests
+				        }]
+			        });
+			    });
+			});
+		</script>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+    <!--MAIN CONTENT AREA-->
+    <div class="container inner_content">
+    	<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span9">
+					<h1><a name="home"></a>Top Users</h1>
+					<p>Latest report covering {{ start }} to {{ end }}.</p>
+					{% if report %}
+						<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+						<!-- <ol>
+							{% for domain in report_contents.domains %}
+								<li>
+									{{ domain.domain }}: {{ domain.frequency }}
+									{% if domain.frequency != 1 %}
+										occurrences
+									{% else %}
+										occurrence
+									{% endif %}
+								</li>
+							{% endfor %}
+						</ol> -->
+					{% else %}
+						<p>Unable to find report for the specified date.</p>
+					{% endif %}
+				</div>
+				<div class="span3">
+					{% include "sidebar.html" %}
+				</div>
+			</div>
+	    </div>
+	</div>
+{% endblock %}

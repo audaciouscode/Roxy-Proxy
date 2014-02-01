@@ -1,0 +1,17 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}{% if LANGUAGE_CODE == 'he' %}בעיה בתהליך ההפעלה{% else %}Activation Error{% endif %}{% endblock %}
+{% block content %}
+<div class="container inner_content">
+	<div class="row-fluid">
+		<div class="span12">
+			{% if LANGUAGE_CODE == 'he' %}
+		אופס &ndash;  נראה כי קוד ההפעלה שלך לא תקף. אנא נסה את הקישור שנית.			
+			{% else %}
+				Oops &ndash; it seems that your activation key is invalid.  Please check the url again.
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

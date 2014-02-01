@@ -1,0 +1,19 @@
+{% extends "roxy_base.html" %}
+{% block title %}Page Not Found | Roxy Proxy{% endblock %}
+{% block content %}
+    <!--MAIN CONTENT AREA-->
+    <div class="container inner_content">
+    	<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span9">
+					<h1>Page Not Found</h1>
+					
+					<p>The requested resource could not be located.</p>
+				</div>
+				<div class="span3">
+					{% include "sidebar.html" %}
+				</div>
+			</div>
+	    </div>
+	</div>
+{% endblock %}

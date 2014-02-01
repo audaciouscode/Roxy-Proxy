@@ -1,0 +1,140 @@
+{% extends "roxy_base.html" %}
+{% load i18n %}
+{% block title %}Roxy Proxy{% endblock %}
+{% block content %}
+	{% if LANGUAGE_CODE == 'he' %}
+		<!--WELCOME AREA-->
+		<div class="gray_bg">
+			<div class="container">
+				<div class="row welcome">
+					<div class="span12">
+						<h1>רוקסי פיתוח תוכנה</h1>
+						<p><em>תודה לכם על עזרתכם בפיתוח הגרסה החדשה של רוקסי.</em></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/WELCOME AREA-->
+
+		<!--MAIN CONTENT AREA-->
+		<div class="container portfolio">
+			<div style="margin-top:65px;">
+				<div class="row">
+					<div class="span4">
+						<h2><span class="colored"><strong>\\\</strong></span> מתחילים</h2>
+						<hr class="dash" />
+						<div>
+							<p>תחילה <a href="{% url registration_register %}">פתח חשבון</a>, התחבר ואז עקוב אחרי <a href="{% url setup %}">הוראות ההפעלה לדפדפן שלך</a>. אתה מוכן להתחיל אם אתה <a href="{% url proxy_test %}">לוחץ כאן</a> ורוקסי פעילה.</p>
+							<p>מומלץ להוסיף למועדפים את העמוד <a href="{% url change_session %}">שנה מצב גלישה</a> על מנת להקל את השליטה על מצב הגלישה שלך.</p>
+						</div>
+						<hr class="dash" />
+					</div>
+					<div class="span4">
+						<h2><span class="colored"><strong>\\\</strong></span> הרצת נסיון</h2>
+						<hr class="dash" />
+						<div>
+								<p>אם חיבור האינטרנט שלכם איטי או שדברים מוזרים מתחילים לקרות לחיבור האינטרנט שלכם, נסו לבטל את ההגדרות של רוקסי פרוקסי ולראות עם זה עוזר. אם  ביטול רוקסי פותר את הבעיה, אנא דווחו בדחיפות על הבעיה לאריקה במייל למטה &#101;&#114;&#105;&#099;&#107;&#097;&#064;&#114;&#111;&#120;&#121;&#112;&#114;&#111;&#120;&#121;&#046;&#111;&#114;&#103;זה יעזור לנו אם נדע מתי הבעיה ארעה</p>
+						</div>
+						<hr class="dash" />
+					</div>
+					<div class="span4">
+						<h2><span class="colored">\\\<strong></strong></span> מי אנחנו</h2>
+						<hr class="dash" />
+						<div>
+							<p>
+								שלום,  אנחנו שירה דביר גבירצמן ממכללת נתניה, אריקה מנצין-טריאבינו מאוניברסיטת ארסמוס בהולנד ויריב צפתי מאוניברסיטת חיפה ואנחנו רוצים להודות לכם על השתתפותכם במחקר שלנו. ההשתתפות שלכם היא מהותית להצלחת המחקר ואנחנו מעריכים את התרומה שלכם.
+							</p>
+						</div>
+						<hr class="dash" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="span8">
+						<h3><span class="colored">\\\</span> דווח על תקלה או שאל שאלה</h3>
+						<div id="note"></div>
+						<form class="form" id="ajax-contact-form" action="{% url contact %}" method="post">
+							{% csrf_token %}
+							<input type="text" name="sender" class="span6" placeholder="שם" value="{% if form.sender.value %}{{ form.sender.value }}{% endif %}" />
+							{% for error in form.sender.errors %}
+								<div class="control-group error">
+									<span class="help-inline">{{ error }}</span>
+								</div>
+				 			{% endfor %}
+							<input type="text" name="email" class="span6" placeholder="כתובת הדואר האלקטרוני שלך" value="{% if form.email.value %}{{ form.email.value }}{% endif %}" />
+							{% for error in form.email.errors %}
+								<div class="control-group error">
+									<span class="help-inline">{{ error }}</span>
+								</div>
+			 				{% endfor %}
+							<textarea type="text" name="message" placeholder="אנא כתוב לנו באיזו גרסה של מערכת הפעלה את מתשמש, מה הדפדפן שלך, מה שם המתשמש שלך ברוקסי ואת השעה בה קרתה התקלה" rows="8" class="span8">{% if form.message.value %}{{ form.message.value }}{% endif %}</textarea>
+							{% for error in form.message.errors %}
+								<div class="control-group error">
+									<span class="help-inline">{{ error }}</span>
+								</div>
+			 				{% endfor %}
+							<button type="submit" class="btn btn-success">שלח הודעה</button>
+						</form>
+					</div>
+					<hr />
+				</div>
+			</div>
+		</div>
+		<!--/MAIN CONTENT AREA-->
+	{% else %}
+		<!--WELCOME AREA-->
+		<div class="gray_bg">
+			<div class="container">
+				<div class="row welcome">
+					<div class="span12">
+						<h1>Roxy</h1>
+						<p><em>Enabling observational web research</em></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/WELCOME AREA-->
+
+		<!--MAIN CONTENT AREA-->
+		<div class="container portfolio">
+			<div style="margin-top:65px;">
+				<div class="row">
+					<div class="span4">
+						<h2><span class="colored"><strong>///</strong></span> Getting Started</h2>
+						<hr class="dash" />
+						<div>
+							<p>First <a href="{% url registration_register %}">register for an account</a>, login, then follow the <a href="{% url setup %}">setup instructions for your browser</a>. You're all set if you <a href="{% url proxy_test %}">click here</a> and Roxy is active. </p>
+							<p>You may want to bookmark the <a href="{% url change_session %}">Change Session Type</a> page for easy access to control your session type.</p>
+						</div>
+						<hr class="dash" />
+					</div>
+					<div class="span4">
+						<h2><span class="colored"><strong>///</strong></span> Problems?</h2>
+						<hr class="dash" />
+						<div>
+								<p>If you experience any problems browsing the Internet please report the problem ASAP by emailing emtrevino@gmail.com.</p>
+							
+						</div>
+						<hr class="dash" />
+					</div>
+					<div class="span4">
+						<h2><span class="colored">///<strong></strong></span> About Us</h2>
+						<hr class="dash" />
+						<div>
+							<p>
+								Roxy was developed with support from Northwestern University in Evanston Illinois as a tool to enable researchers to collect observational web data with informed consent. This allows researchers to collect the same information that your Internet service provider and every website you visit already gathers so that researchers can use it for scientific research to understand the web, rather than to send you advertisements.
+							</p>
+						</div>
+						<hr class="dash" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="span8">
+
+					</div>
+					<hr />
+				</div>
+			</div>
+		</div>
+		<!--/MAIN CONTENT AREA-->
+	{% endif %}
+{% endblock %}

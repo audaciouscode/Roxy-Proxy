@@ -1,0 +1,51 @@
+{% extends "roxy_base.html" %}
+{% block title %}Setup Roxy | Other{% endblock %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block content %}
+	{% if LANGUAGE_CODE == 'he' %}
+	    <!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h1></a>הגדרות רוקסי פרוקסי</h1>
+						<h3>אחר</h3>
+						<p>רוב המכשירים המתחברים לאינטרנט מאפשרים  לך להגדיר שרת פרוקסי.  כל דפדפן שתומך בשרת פרוקסי יכול להשתמש ברוקסי.  אתה יכול לחפש ברשת  עזרה בהגדרות שרת פרוקסי למכשיר שלך ולהשתמש בקישור  הזה  על מנת להגדיר את שרת הפרוקסי או את קבצי ה PAC  <strong>{{ user.profile.pac_url }}</strong></p>
+						<ol>
+							<li><a href="{% url proxy_test %}">לחץ כאן</a> לבדוק האם ההתקנה הושלמה</li>
+							<li>הוסף את <a href="{% url change_session %}">שנה סוג גלישה</a>למועדפים על מנת להקל על הגישה והשליטה שלך בסוגי הגלישה האפשריים ברוקסי</li>
+							<li>הדפס את ההוראות הללו למקרה שתצטרך להתחבר  בלי גישה לאינטרנט</li>
+							<li>על מנת <strong>להתנתק</strong>מרוקסי, עקוב אחרי צעדי ההתקנה, אך במקום  להוסיף  את הכתובת של רוקסי,({{ user.profile.pac_url }}), <strong>הסר אותה</strong>.</li>
+						</ol>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+		    </div>
+		</div>
+	{% else %}
+	    <!--MAIN CONTENT AREA-->
+		<div class="container inner_content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span9">
+						<h1></a>Roxy Proxy Setup</h1>
+						<h3>Other</h3>
+						<p>Most devices that connect to the web allow you to specify proxy settings. Any web browser that supports a proxy server can use Roxy. You can search online for help setting up a proxy on your device and use this URL for the automatic proxy configuration or PAC file: <strong>{{ user.profile.pac_url }}</strong></p>
+						<ol>
+							<li><a href="{% url proxy_test %}">Click here</a> to test if the setup is complete.</li>
+							<li>Bookmark the <a href="{% url change_session %}">Change Session Type</a> page for easy access to control your session type at any time.</li>
+							<li>Print the instructions you use to setup your device or browser in case you need to access them offline.</li>
+							<li>To <strong>disconnect</strong> from Roxy, go through the setup instructions, but instead of adding the proxy address ({{ user.profile.pac_url }}), <strong>remove it</strong>.</li>
+						</ol>
+					</div>
+					<div class="span3">
+						{% include "sidebar.html" %}
+					</div>
+				</div>
+		    </div>
+		</div>
+	{% endif %}
+{% endblock %}

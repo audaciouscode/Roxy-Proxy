@@ -1,0 +1,92 @@
+{% extends "roxy_base.html" %}
+{% block title %}Roxy Proxy{% endblock %}
+{% block content %}
+<!--WELCOME AREA-->
+<div class="gray_bg">
+    <div class="container">
+        <div class="row welcome">
+            <div class="span12">
+                <h1>Roxy Ensayo and Development</h1>
+                <p><em>Gracias por aiudar helping to test Roxy as we develop this new version.</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/WELCOME AREA-->
+<!--MAIN CONTENT AREA-->
+<div class="container portfolio">
+    <div style="margin-top:65px;">
+        <div class="row">
+            <div class="span4">
+                <div class="modal hade fade" id="myModal">
+                    <div class="modal-header">
+                    <a class="close" data-dismiss="modal">x</a>
+                    <h3>Modal header</h3>
+                    </div>
+                    <div class="modal-body">
+                    <p>One fine body...</p>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+                <div>
+                    <h2><span class="colored"><strong>///</strong></span> Getting Started</h2>
+                    <hr class="dash">
+                    <div>
+                        <p>First <a href="{% url registration_register %}">register for an account</a>, login, then follow the <a href="{% url setup %}">setup instructions for your browser</a>. You're all set if you <a href="{% url proxy_test %}">click here</a> and Roxy is active. </p><p>You may want to bookmark the <a href="{% url change_session %}">Change Session Type</a> page for easy access to control your session type.</p>
+                    </div>
+                    <hr class="dash">
+                </div>
+            </div>
+            <div class="span4">
+               	<h2><span class="colored"><strong>///</strong></span> Beta Testing</h2>
+                <hr class="dash">
+                <div>
+                    <p>If your internet connection seems slow or if anything weird starts happening with your Internet connection, try taking out the Roxy proxy setting to see if that solves your problem. If so, please report the problem ASAP using the form below or by emailing Ericka  &#101;&#114;&#105;&#099;&#107;&#097;&#064;&#114;&#111;&#120;&#121;&#112;&#114;&#111;&#120;&#121;&#046;&#111;&#114;&#103;. It helps to know the time when a problem occurred.</p>
+                </div>
+                <hr class="dash">
+            </div>
+            <div class="span4">
+                <h2><span class="colored">///<strong></strong></span> Thank You!</h2>
+                <hr class="dash">
+                <div>
+                    <p>רב תודות<br/>
+					<p>धन्यवाद<br/>
+					<p>多謝<br/>
+					<p>Tak<br/>
+					<p>Dank u zeer<br/>
+					<p>どうもありがとう </p>
+                </div>
+                <hr class="dash">
+        </div>
+		<div class="span8">
+            <h3><span class="colored">///</span> Report a bug or ask a question</h3>
+            <div id="note"></div>
+            <form class="form" id="ajax-contact-form" action="" method="post">
+              	{% csrf_token %}
+                    <input type="text" name="sender" class="span6" placeholder="Name" value="{% if form.sender.value %}{{ form.sender.value }}{% endif %}" />
+					{% for error in form.sender.errors %}
+						<div class="control-group error">
+							<span class="help-inline">{{ error }}</span>
+						</div>
+		    		{% endfor %}
+                    <input type="text" name="email" class="span6" placeholder="E-mail address" value="{% if form.email.value %}{{ form.email.value }}{% endif %}" />
+					{% for error in form.email.errors %}
+						<div class="control-group error">
+							<span class="help-inline">{{ error }}</span>
+						</div>
+		    		{% endfor %}
+                <textarea type="text" name="message" placeholder="Please include your operating system version, browser version, Roxy user name, and the time when the issue occurred." rows="8" class="span8">{% if form.message.value %}{{ form.message.value }}{% endif %}</textarea>
+				{% for error in form.message.errors %}
+					<div class="control-group error">
+						<span class="help-inline">{{ error }}</span>
+					</div>
+	    		{% endfor %}
+                <button type="submit" class="btn btn-success">Send Message</button>
+			</form>
+        </div>
+        <hr>
+        </div>
+
+<!--/MAIN CONTENT AREA-->
+{% endblock %}

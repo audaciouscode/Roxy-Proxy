@@ -1,0 +1,3 @@
+URL	Retrieved	MIME Type	Content Key	Status Code
+{% for item in history_items %}{{ item.url }}	{{ item.retrieved }}	{{ item.mime_type }}	{{ item.content_key }}	{{ item.status_code }}
+{% endfor %}

@@ -1,0 +1,70 @@
+{% extends "roxy_base.html" %}
+{% block title %}Solr Query Interface | Roxy Proxy{% endblock %}
+{% block page_header %}
+	{% if report %}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+    <!--MAIN CONTENT AREA-->
+    <div class="container inner_content">
+    	<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span9">
+					<h1><a name="home"></a>Query Interface</h1>
+					<p>Please enter a Solr query below:</p>
+					<form action="" method="POST">
+						{% csrf_token %}
+						<table style="width: 100%">
+							<tr>
+								<td valign="top">
+									<textarea name="query" rows="8" style="width: 90%;">{{ query|safe }}</textarea>
+									<br />
+									<input type="submit" />
+								</td>
+								<td valign="top">
+									<strong>Available Fields</strong>
+									
+									<p>
+									    text<br />
+										ip_address<br />
+										username<br />
+										url<br />
+										title<br />
+										domains<br />
+										referrer_domains<br />
+										referrer_url<br />
+										http_status<br />
+										content_type<br />
+										content_size (number)<br />
+										content_path<br />
+										content_key<br />
+										retrieved (date)<br />
+										search_terms<br />
+										parent_score (number)
+									</p>
+									(<a href="http://wiki.apache.org/solr/SolrQuerySyntax">Solr Query Syntax</a>)
+								</td>
+							</tr>
+						</table>
+					</form>
+					{% if results %}
+						<h2>{{ results|length }} Matches (<a href="{% url solr_query_txt %}?query={{ query|urlencode }}" target="_blank">Tab Separated Values version</a>)</h2>
+						
+						
+			            {% for result in results %}
+			                <p>
+            			        {{ result.retrieved }}: {{ result.username }}: From {{ result.domains }}: {{ result.title }} (<a href="{{ result.object.url }}" target="_blank">original</a>, 
+            			       	<a href="{{ result.object.content_url }}" target="_blank">mirror</a>, <a href="{{ result.object.content_txt_url }}" target="_blank">text</a>)
+			                </p>
+			            {% endfor %}
+					{% endif %}
+				</div>
+				<div class="span3">
+					{% include "sidebar.html" %}
+				</div>
+			</div>
+	    </div>
+	</div>
+{% endblock %}
