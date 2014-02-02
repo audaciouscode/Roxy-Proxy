@@ -109,7 +109,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-INTERNAL_IPS = ('127.0.0.1', '67.176.151.102',)
+INTERNAL_IPS = ('127.0.0.1', '10.0.42',)
 
 ROOT_URLCONF = 'roxy_master.urls'
 

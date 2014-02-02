@@ -10,7 +10,7 @@ from django.db import connection, transaction
 
 from content.models import *
 
-LOCAL_PATH = '/var/www/django/roxy/proxy_content/'
+LOCAL_PATH = '/var/www/Roxy-Proxy/roxy/proxy_content/'
 
 def convert_encoding(data, new_coding='UTF-8'):
     coding = icu.CharsetDetector(data).detect().getName()

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd /var/www/roxy_content
+cd /var/www/Roxy-Proxy
 source venv/bin/activate
 
-cd /var/www/roxy_content/roxy_master
+cd /var/www/Roxy-Proxy/roxy
 ./manage.py update_index
 

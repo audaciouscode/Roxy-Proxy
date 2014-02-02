@@ -62,7 +62,7 @@ function FindProxyForURL(url, host)
 		return "DIRECT";
 	else if (url.toLowerCase().indexOf("http://192.") == 0)
 		return "DIRECT";
-	else if (url.toLowerCase().indexOf("http://10.") == 0)
+	 else if (url.toLowerCase().indexOf("http://10.") == 0)
 		return "DIRECT";
 		
 	return "PROXY {{ server.ip_address }}:{{ server.port }}; DIRECT";

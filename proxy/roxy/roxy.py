@@ -14,7 +14,7 @@ from email.mime.text import MIMEText
 from twisted.web import proxy, http
 
 FOLDER = 'content/'
-PROXY_MASTER = 'ec2-54-221-7-65.compute-1.amazonaws.com'
+PROXY_MASTER = '10.0.0.42'
 SESSIONS_URL = 'http://' + PROXY_MASTER + '/proxy/session'
 REDIRECT_PATH = '/proxy/redirect?'
 HISTORY_PATH = '/proxy/history'

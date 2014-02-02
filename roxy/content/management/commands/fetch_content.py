@@ -4,8 +4,8 @@ from django.core.management.base import BaseCommand, CommandError
 
 from content.models import *
 
-LOCAL_PATH = '/var/www/django/roxy/proxy_content/'
-KEY_PATH = '/var/www/django/roxy/roxy_master/roxy_master/content/keys/id_rsa'
+LOCAL_PATH = '/var/www/Roxy-Proxy/roxy/proxy_content/'
+KEY_PATH = '/var/www/django/Roxy-Proxy/roxy_master/roxy_master/content/keys/id_rsa'
 RSYNC_PATH = '/usr/bin/rsync'
 SSH_PATH = '/usr/bin/ssh'
 
