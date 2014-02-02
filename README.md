@@ -15,9 +15,9 @@ _Note that this setup assumes some familiarity with Django, Postgres, Solr, and 
 
 Steps:
 
-1. Check out `Roxy-Proxy` repository.
+1. Install Apache, WSGI, Postgres, and Python's virtual-env.
 
-2. Install Apache, WSGI, Postgres, and Python's virtual-env.
+2. Check out `Roxy-Proxy` repository.
 
 3. Set up a `virtualenv` environment. Next to the `proxy` and `roxy` files works well.
 
