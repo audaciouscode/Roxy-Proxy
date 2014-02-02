@@ -7,6 +7,23 @@ Roxy associated gathered content with a user login, so the first time a user att
 
 Roxy is the creation of Ericka Menchen-Trevino and was developed by Chris Karr. It is provided under a GPLv3 open-source license.
 
+Starting Roxy
+=============
+
+If you set up Roxy using the instructions below, the following servers must be running:
+
+1. Django: This is typically started when Apache starts up.
+
+2. Solr: From the ```solr/example``` folder, start Solr with the command
+    
+    ```nohup java -jar start.jar &```
+
+3. Twisted: This provides the proxy server. From the ```proxy``` folder in the repository, run
+
+    ```twistd -y roxy.tac```
+    
+Feel free to add these commands in any local system startup scripts.
+
 
 Installation
 ============
